@@ -10,9 +10,9 @@ NYC_longitude = -74.01
 def get_today_weather(latitude, longitude,date):
     # gets today's highest temp (in Farenheight) and chance of rain (%) for a location
     # days = 16 gets the next 16 days of forecast (all thats available from the API)
-    request_url = f"{FORECAST_URL}?latitude={NYC_latitude}&longitude={NYC_longitude}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=auto&forecast_days=16"
+    WEATHER_URL = f"{FORECAST_URL}?latitude={NYC_latitude}&longitude={NYC_longitude}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=auto&forecast_days=16"
 
-    response = requests.get(request_url)
+    response = requests.get(WEATHER_URL)
     data = response.json()
 
     daily = data["daily"]
@@ -22,9 +22,9 @@ def get_today_weather(latitude, longitude,date):
 
     # print(data) -- tested this and prints the data returned from API call - 16 temperatures
     return {
-        f"high temp: {daily['temperature_2m_max'][date_index]}°F",
-        f"low temp: {daily['temperature_2m_min'][date_index]}°F",
-        f"chance of rain: {daily['precipitation_probability_max'][date_index]}%"
+        "high_temp": daily["temperature_2m_max"][date_index],
+        "low_temp": daily["temperature_2m_min"][date_index],
+        "rain_chance": daily["precipitation_probability_max"][date_index]
     }
 
 
@@ -35,8 +35,8 @@ if __name__ == "__main__":
     date = input("What date do you want to go to the MET? (YYYY-MM-DD)")
 
     # Check input is valid - if not, ask again
-    request_url = f"{FORECAST_URL}?latitude={NYC_latitude}&longitude={NYC_longitude}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=auto&forecast_days=16"    
-    response = requests.get(request_url)
+    WEATHER_URL = f"{FORECAST_URL}?latitude={NYC_latitude}&longitude={NYC_longitude}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=auto&forecast_days=16"    
+    response = requests.get(WEATHER_URL)
     data = response.json()
 
     # print(data["daily"]["time"])  Used to check list of date output 
