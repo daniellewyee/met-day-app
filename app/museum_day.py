@@ -50,11 +50,15 @@ def get_museum_day_plan(date):
     # searchest Met API for art based on word and returns a list of 10 object Ids
 
     weather = get_today_weather(NYC_latitude, NYC_longitude, date)
+    # gets the weather recommendation based on date
 
     recommendation = get_museum_recommendation(weather["high_temp"], weather["rain_chance"])
+    # gets the museum recommendation for the day based on weather
 
     search_term = random.choice(recommendation["search_words"])
+    # picks a random search term out of our defined list
     artwork = get_random_art_list(search_term)
+    # gets the list of 10 art pieces based on the search term
 
     return {
         "date": date,
