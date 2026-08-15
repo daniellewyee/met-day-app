@@ -12,10 +12,12 @@ HOT_WORDS = ["sun", "summer", "beach", "garden"]
 COLD_WORDS = ["winter", "snow", "fire", "moon"]
 NICE_WORDS = ["garden", "flower", "landscape", "bird"]
 
-def get_museum_recommendation(high_temp, rain_chance):
+def get_museum_recommendation(high_temp, low_temp, rain_chance):
     # decides if it's a good museum day based on weather, and picks a random search term to curate some art
     # search word is a list of words that matches the weather
     # returns a dictionary
+
+    avg_temp = (high_temp + low_temp) / 2
 
     if rain_chance >= 50:
         return {
@@ -23,13 +25,13 @@ def get_museum_recommendation(high_temp, rain_chance):
             "reason": "A rainy day :/ perfect excuse to go to the museum!",
             "search_words": RAIN_WORDS
         }
-    elif high_temp >= 90:
+    elif avg_temp >= 90:
         return {
             "should_go": True,
             "reason": "Wow, it's way too hot to be outside for long. Let's go to the museum!",
             "search_words": HOT_WORDS
         }
-    elif high_temp <= 35:
+    elif avg_temp <= 35:
         return {
             "should_go": True,
             "reason": "Wow, it's way too cold to be outside for long. Let's go to the museum!",
@@ -51,12 +53,14 @@ def get_museum_day_plan(date):
 
     weather = get_today_weather(NYC_latitude, NYC_longitude, date)
     # gets the weather recommendation based on date
+    # function returns a dictionary with high temp, low temp, and rain chance
 
-    recommendation = get_museum_recommendation(weather["high_temp"], weather["rain_chance"])
+    recommendation = get_museum_recommendation(weather["high_temp"], weather["low_temp"], weather["rain_chance"])
     # gets the museum recommendation for the day based on weather
 
     search_term = random.choice(recommendation["search_words"])
     # picks a random search term out of our defined list
+
     artwork = get_random_art_list(search_term)
     # gets the list of 10 art pieces based on the search term
 
@@ -88,11 +92,17 @@ if __name__ == "__main__":
         print("Invalid date. Please enter a date within the next 16 days.")
         date = input("What date do you want to go to the MET? (YYYY-MM-DD): ")
 
-    weather = get_today_weather(NYC_latitude, NYC_longitude,date)
-    print(weather)
+    plan = get_museum_day_plan(date)
+    print(plan)
 
-    high_temp = weather["high_temp"]
-    rain_chance = weather["rain_chance"]
+    print(f"\nWeather on {plan['date']}: high of {plan['high_temp']}°F, low of {plan['low_temp']}°F, {plan['rain_chance']}% chance of rain")
+    print(plan["should_go"],plan["reason"])
 
-    get_museum_recommendation(high_temp, rain_chance)
-    print(get_museum_recommendation(high_temp, rain_chance))
+    print(f"\nSearched for: {plan['search_word']}")
+    print(f"Found {len(plan['artwork'])} pieces:\n")
+
+    for art in plan["artwork"]:
+        print(art["name"])
+        print(f"  Artist: {art['artist']}")
+        print(f"  Photo: {art['photo']}")
+        print()

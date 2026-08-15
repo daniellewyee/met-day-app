@@ -20,3 +20,10 @@ pip install -r requirements.txt
 The APIs used do not require any key / account. Both are free to use
 
 # Usage
+Run weather getter:
+
+python -m app.weather
+
+Run museum_day planner:
+
+python -m app.museum_day

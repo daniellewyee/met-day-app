@@ -20,7 +20,7 @@ def find_art(search_word):
     if object_ids == None:
         return []
     
-    print(object_ids)
+    # print(object_ids)
     return object_ids
 
 
@@ -44,9 +44,14 @@ def get_random_art_list(search_word):
     results = []
     # create empty list to store my result list of art pieces
 
-    # for each object id in my list of 10, get the details 
+    # for each object id in my list of 10, get the details and append to my results list
     for object_id in object_ids:
         details = get_object_details(object_id)
+
+        if "title" not in details:
+            continue
+        # used AI to debug here and fix error when titles didnt have any data
+
         art_summary = {
             "name": details["title"],
             "artist": details["artistDisplayName"],
