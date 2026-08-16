@@ -1,0 +1,26 @@
+# created basic HTML and then had AI enhance with CSS and formatting.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Art Search Results</title>
+</head>
+<body>
+    <a href="/art-search/form">&larr; New search</a>
+
+    <h1>Results for "{{ search_word }}"</h1>
+
+    {% if art_list %}
+        {% for art in art_list %}
+            <div>
+                <h3>{{ art.name }}</h3>
+                <p>{{ art.artist }}</p>
+                <img src="{{ art.photo }}" alt="{{ art.name }}" width="250">
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No results found. Try a different word.</p>
+    {% endif %}
+</body>
+</html>

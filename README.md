@@ -27,3 +27,26 @@ python -m app.weather
 Run museum_day planner:
 
 python -m app.museum_day
+
+
+# Web App
+Run the web app (then view in the browser at http://localhost:5000/):
+
+# if we have the FLASK_APP=web_app env var in the ".env" file:
+flask run
+
+# Mac OS:
+FLASK_APP=web_app 
+flask run
+
+# Windows OS:
+... if `export` doesn't work for you, try `set` instead
+... or set FLASK_APP variable via ".env" file
+export FLASK_APP=web_app
+flask run
+whenever we make updates to our flask web app, we need to restart the web server. We do that by typing 'ctrl+c' to stop and 'flask run' again to start
+
+Testing
+Run tests:
+
+pytest

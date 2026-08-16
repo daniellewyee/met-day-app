@@ -1,0 +1,35 @@
+# created basic HTML and then had AI enhance with CSS and formatting.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Museum Day Plan</title>
+</head>
+<body>
+    <a href="/museum-day/form">&larr; Try another date</a>
+
+    <h1>{{ plan.date }}</h1>
+    <p>High of {{ plan.high_temp }}°F, low of {{ plan.low_temp }}°F, {{ plan.rain_chance }}% chance of rain.</p>
+
+    {% if plan.should_go %}
+        <h2>{{ plan.reason }}</h2>
+    {% else %}
+        <h2>{{ plan.reason }}</h2>
+    {% endif %}
+
+    <p>Searched for: {{ plan.search_word }}</p>
+
+    {% if plan.artwork %}
+        {% for art in plan.artwork %}
+            <div>
+                <h3>{{ art.name }}</h3>
+                <p>{{ art.artist }}</p>
+                <img src="{{ art.photo }}" alt="{{ art.name }}" width="250">
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>Couldn't find any art for that search word.</p>
+    {% endif %}
+</body>
+</html>

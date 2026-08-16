@@ -4,5 +4,7 @@ pandas
 
 pytest
 
+python-dotenv
+
 #web app:
 flask
