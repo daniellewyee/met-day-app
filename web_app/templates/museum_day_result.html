@@ -1,35 +1,38 @@
-# created basic HTML and then had AI enhance with CSS and formatting.
+<!-- created basic HTML and then had AI enhance with CSS and formatting. -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Museum Day Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <a href="/museum-day/form">&larr; Try another date</a>
+    <div class="page">
+        <a class="back-link" href="/museum-day/form">&larr; Try another date</a>
 
-    <h1>{{ plan.date }}</h1>
-    <p>High of {{ plan.high_temp }}°F, low of {{ plan.low_temp }}°F, {{ plan.rain_chance }}% chance of rain.</p>
+        <h1>{{ plan.date }}</h1>
 
-    {% if plan.should_go %}
-        <h2>{{ plan.reason }}</h2>
-    {% else %}
-        <h2>{{ plan.reason }}</h2>
-    {% endif %}
+        <div class="weather-summary">
+            <p>High of {{ plan.high_temp }}°F, low of {{ plan.low_temp }}°F, {{ plan.rain_chance }}% chance of rain.</p>
+            <h2>{{ plan.reason }}</h2>
+            <span class="search-word">Searched for: {{ plan.search_word }}</span>
+        </div>
 
-    <p>Searched for: {{ plan.search_word }}</p>
-
-    {% if plan.artwork %}
-        {% for art in plan.artwork %}
-            <div>
-                <h3>{{ art.name }}</h3>
-                <p>{{ art.artist }}</p>
-                <img src="{{ art.photo }}" alt="{{ art.name }}" width="250">
+        {% if plan.artwork %}
+            <div class="art-grid">
+                {% for art in plan.artwork %}
+                    <div class="art-card">
+                        <img src="{{ art.photo }}" alt="{{ art.name }}">
+                        <div class="art-card-info">
+                            <h3>{{ art.name }}</h3>
+                            <p>{{ art.artist }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <hr>
-        {% endfor %}
-    {% else %}
-        <p>Couldn't find any art for that search word.</p>
-    {% endif %}
+        {% else %}
+            <p class="empty-message">Couldn't find any art for that search word.</p>
+        {% endif %}
+    </div>
 </body>
 </html>

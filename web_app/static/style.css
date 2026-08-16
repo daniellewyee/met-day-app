@@ -1,0 +1,184 @@
+/* created basic HTML and then had AI enhance with CSS and formatting. */
+
+body {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: #faf6f0;
+    color: #2e2a26;
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 24px 80px 24px;
+}
+
+a {
+    color: #7a2e2e;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    color: #4a2020;
+}
+
+h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.4rem;
+    margin-top: 0;
+    color: #4a2020;
+}
+
+.subtitle {
+    color: #6b6259;
+    margin-bottom: 32px;
+}
+
+/* home page tool list */
+
+.tool-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tool-card {
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid #e6ddd0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.tool-card a {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.tool-card p {
+    margin: 6px 0 0 0;
+    color: #6b6259;
+}
+
+/* forms */
+
+form {
+    background-color: #ffffff;
+    border: 1px solid #e6ddd0;
+    border-radius: 10px;
+    padding: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    border: 1px solid #d8cdb9;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #7a2e2e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5e2222;
+}
+
+/* weather / recommendation summary */
+
+.weather-summary {
+    background-color: #ffffff;
+    border: 1px solid #e6ddd0;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+
+.weather-summary p {
+    margin: 4px 0;
+    color: #6b6259;
+}
+
+.search-word {
+    display: inline-block;
+    background-color: #f1e6d8;
+    color: #6b4a20;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+/* art grid */
+
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.art-card {
+    background-color: #ffffff;
+    border: 1px solid #e6ddd0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.art-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background-color: #eee;
+}
+
+.art-card-info {
+    padding: 12px 14px;
+}
+
+.art-card-info h3 {
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+}
+
+.art-card-info p {
+    font-size: 0.9rem;
+    color: #6b6259;
+    margin: 0;
+}
+
+.empty-message {
+    color: #6b6259;
+    font-style: italic;
+}

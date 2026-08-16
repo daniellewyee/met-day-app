@@ -1,19 +1,22 @@
-# created basic HTML and then had AI enhance with CSS and formatting.
+<!-- created basic HTML and then had AI enhance with CSS and formatting. -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Museum Day Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <a href="/">&larr; Home</a>
+    <div class="page">
+        <a class="back-link" href="/">&larr; Home</a>
 
-    <h1>Museum Day Planner</h1>
-    <p>Enter a date within the next 16 days to check the weather and get an art recommendation.</p>
+        <h1>Museum Day Planner</h1>
+        <p class="subtitle">Enter a date within the next 16 days to check the weather and get an art recommendation.</p>
 
-    <form method="POST" action="/museum-day/plan">
-        <input type="text" name="date" placeholder="YYYY-MM-DD" size="20">
-        <button type="submit">Check</button>
-    </form>
+        <form method="POST" action="/museum-day/plan">
+            <input type="text" name="date" placeholder="YYYY-MM-DD">
+            <button type="submit">Check</button>
+        </form>
+    </div>
 </body>
 </html>

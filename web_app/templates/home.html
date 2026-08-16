@@ -1,17 +1,26 @@
-# created basic HTML and then had AI enhance with CSS and formatting.
+<!-- created basic HTML and then had AI enhance with CSS and formatting. -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Met Day App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Met Day App</h1>
-    <p>An app to help you decide if it's a good day to go to the Met, and find art to see when you get there.</p>
+    <div class="page">
+        <h1>Met Day App</h1>
+        <p class="subtitle">An app to help you decide if it's a good day to go to the Met, and find art to see when you get there.</p>
 
-    <ul>
-        <li><a href="/museum-day/form">Museum Day Planner</a> - checks the weather and suggests art to see</li>
-        <li><a href="/art-search/form">Met Art Search</a> - search for art by word, get a randomized list</li>
-    </ul>
+        <ul class="tool-list">
+            <li class="tool-card">
+                <a href="/museum-day/form">Museum Day Planner</a>
+                <p>Checks the weather and suggests art to see</p>
+            </li>
+            <li class="tool-card">
+                <a href="/art-search/form">Met Art Search</a>
+                <p>Search for art by word, get a randomized list</p>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>

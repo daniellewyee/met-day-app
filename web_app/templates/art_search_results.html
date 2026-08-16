@@ -1,26 +1,32 @@
-# created basic HTML and then had AI enhance with CSS and formatting.
+<!-- created basic HTML and then had AI enhance with CSS and formatting. -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Art Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <a href="/art-search/form">&larr; New search</a>
+    <div class="page">
+        <a class="back-link" href="/art-search/form">&larr; New search</a>
 
-    <h1>Results for "{{ search_word }}"</h1>
+        <h1>Results for "{{ search_word }}"</h1>
 
-    {% if art_list %}
-        {% for art in art_list %}
-            <div>
-                <h3>{{ art.name }}</h3>
-                <p>{{ art.artist }}</p>
-                <img src="{{ art.photo }}" alt="{{ art.name }}" width="250">
+        {% if art_list %}
+            <div class="art-grid">
+                {% for art in art_list %}
+                    <div class="art-card">
+                        <img src="{{ art.photo }}" alt="{{ art.name }}">
+                        <div class="art-card-info">
+                            <h3>{{ art.name }}</h3>
+                            <p>{{ art.artist }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            <hr>
-        {% endfor %}
-    {% else %}
-        <p>No results found. Try a different word.</p>
-    {% endif %}
+        {% else %}
+            <p class="empty-message">No results found. Try a different word.</p>
+        {% endif %}
+    </div>
 </body>
 </html>

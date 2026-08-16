@@ -1,19 +1,22 @@
-# created basic HTML and then had AI enhance with CSS and formatting.
+<!-- created basic HTML and then had AI enhance with CSS and formatting. -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Met Art Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <a href="/">&larr; Home</a>
+    <div class="page">
+        <a class="back-link" href="/">&larr; Home</a>
 
-    <h1>Met Art Search</h1>
-    <p>Type a word and get a randomized list of 10 on-view pieces matching it.</p>
+        <h1>Met Art Search</h1>
+        <p class="subtitle">Type a word and get a randomized list of 10 on-view pieces matching it.</p>
 
-    <form method="POST" action="/art-search/results">
-        <input type="text" name="search_word" placeholder="e.g. sunflower, cat, armor" size="30">
-        <button type="submit">Search</button>
-    </form>
+        <form method="POST" action="/art-search/results">
+            <input type="text" name="search_word" placeholder="e.g. sunflower, cat, armor">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 </body>
 </html>
