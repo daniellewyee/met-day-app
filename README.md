@@ -32,7 +32,7 @@ python -m app.museum_day
 # Web App
 Run the web app (then view in the browser at http://localhost:5000/):
 
-# if we have the FLASK_APP=web_app env var in the ".env" file:
+if we have the FLASK_APP=web_app env var in the ".env" file:
 flask run
 
 # Mac OS:
