@@ -14,11 +14,11 @@ def find_art(search_word):
 
     object_ids = data["objectIDs"]
 
-    random.shuffle(object_ids)
-    object_ids = object_ids[:10]  # limit to first 10 results
-
     if object_ids == None:
         return []
+
+    random.shuffle(object_ids)
+    object_ids = object_ids[:10]  # limit to first 10 results
     
     # print(object_ids)
     return object_ids

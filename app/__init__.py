@@ -1,3 +1,3 @@
-# this is the "app/__init__.py" file
+# this is the "test/__init__.py" file
 # it can be empty
-# it helps make our local imports work
+# it helps make our local tests work
